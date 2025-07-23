@@ -7,7 +7,9 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-const PORT =process.env.PORT ||3000;
+require("dotenv").config()
+
+const PORT=process.env.PORT ||3000;
 
 app.get('/',(req,res)=>{
     res.send("Anant Sharma's render server")
@@ -19,12 +21,11 @@ app.get('/login',(req,res)=>{
 
 app.post('/authenticate',(req,res)=>{
     const {username,password}=req.body
-    if(username===process.env.USERNAME && password===process.env.PASSWORD){
+    if(username===process.env.NAME && password===process.env.PASSWORD){
         res.send('user authenticated successfully')
     }else{
-        res.send('credentials not match')
+        res.send(`credentials not match .....either username or password is incorrect😢😢`)
     }
-
 })
 
 app.listen(PORT)
