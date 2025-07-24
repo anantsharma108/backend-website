@@ -22,7 +22,7 @@ app.get('/login',(req,res)=>{
 app.post('/authenticate',(req,res)=>{
     const {username,password}=req.body
     if(username===process.env.NAME && password===process.env.PASSWORD){
-        res.send('user authenticated successfully')
+        res.redirect('https://anantsharma108.github.io/digital-notebook/index.html?authenticated=true')
     }else{
         res.send(`credentials not match .....either username or password is incorrect😢😢`)
     }
